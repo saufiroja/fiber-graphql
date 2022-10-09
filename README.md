@@ -1,7 +1,7 @@
-# Fiber GraphQL
+# Fiber GraphQL Clean Architecture
 
 ## Tech Stack
-- Go
+- Go (Programming Languange)
 - Fiber (Go Framework)
 - PostgreSQL (gorm)
 - GraphQL
