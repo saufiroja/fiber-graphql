@@ -1,0 +1,13 @@
+type Customer {
+    Name: String!
+    Age: Int!
+}
+
+type Query {
+    GetCustomer(id: Int): Customer
+    GetCustomers(): [Customer]
+}
+
+type Mutation {
+  CreateCustomer(Name: String!,Age: Int!): Customer!
+}
