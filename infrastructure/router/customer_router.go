@@ -2,7 +2,6 @@ package router
 
 import (
 	"fiber/fiber-graphql/config/database"
-	"fiber/fiber-graphql/controllers"
 	"fiber/fiber-graphql/graphql/resolver"
 	"fiber/fiber-graphql/graphql/schema"
 	"fiber/fiber-graphql/repository"
@@ -21,7 +20,6 @@ func CustomerRouter(fiber *fiber.App, conf database.Config) {
 
 	repo := repository.NewCustomerRepository(db)
 	svc := service.NewCustomerService(repo, conf)
-	controllers := controllers.NewCustomerController(svc)
 
 	cResolver := resolver.NewCustomerResolver(svc)
 	cSchema := schema.NewCustomerSchema(cResolver)
@@ -39,8 +37,4 @@ func CustomerRouter(fiber *fiber.App, conf database.Config) {
 		GraphiQL: true,
 		Pretty:   true,
 	})
-
-	fiber.Get("/customers", controllers.GetAll)
-	fiber.Get("/customers/:id", controllers.GetById)
-	fiber.Post("/customers", controllers.CreateCustomer)
 }
